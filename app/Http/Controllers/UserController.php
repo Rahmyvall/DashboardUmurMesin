@@ -9,9 +9,13 @@ class UserController extends Controller
 {
     public function index()
     {
-        $title = 'Data Users';
-        $users = User::paginate(5);
+        $title = 'Data Users'; // Judul halaman
 
-        return view('admin.user.index', compact('title', 'users'));
+       $users = User::orderBy('created_at', 'desc')
+             ->orderBy('id', 'asc') // memastikan urutan unik
+             ->paginate(10);
+
+        // Kirim ke view
+        return view('admin.user.index', compact('users', 'title'));
     }
 }
