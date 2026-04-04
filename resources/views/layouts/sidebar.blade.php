@@ -24,17 +24,13 @@
                   </a>
                   <ul aria-expanded="false">
                       <li>
-                          <a href="{{ route('user') }}">
+                          <a href="{{ route('user.index') }}">
                               <i class="fa fa-list"></i> Daftar Pengguna
                           </a>
                       </li>
+
                       <li>
-                          <a href="./users-detail.html">
-                              <i class="fa fa-user"></i> Detail Pengguna
-                          </a>
-                      </li>
-                      <li>
-                          <a href="./users-create.html">
+                          <a href="{{ route('user.create') }}">
                               <i class="fa fa-user-plus"></i> Tambah Pengguna
                           </a>
                       </li>

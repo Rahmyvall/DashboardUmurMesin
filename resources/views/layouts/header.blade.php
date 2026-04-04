@@ -137,4 +137,100 @@
     .page-link:hover {
         background-color: #f1f1f1;
     }
+
+    .table {
+        color: var(--bs-body-color);
+    }
+
+    .table thead {
+        background-color: var(--bs-secondary-bg);
+        color: var(--bs-body-color);
+    }
+
+    .card {
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+    }
+
+    .theme-text {
+        color: var(--bs-body-color) !important;
+    }
+
+    .icon-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        transition: 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+    }
+
+    /* Card modern */
+    .modern-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.25s;
+    }
+
+    .modern-card:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Icon bulat */
+    .icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    /* Search */
+    .modern-search {
+        max-width: 220px;
+        border-radius: 8px;
+    }
+
+    /* Table */
+    .modern-table thead {
+        background: #f8f9fa;
+    }
+
+    .modern-table th {
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+    /* Progress */
+    .modern-progress {
+        height: 6px;
+        border-radius: 10px;
+    }
+
+    /* Action icon */
+    .action-icon {
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .action-icon:hover {
+        transform: scale(1.2);
+    }
 </style>

@@ -123,6 +123,7 @@
          }
      };
  </script>
+
  <!-- Chartjs -->
  <script src="{{ asset('admin/plugins/chart.js/Chart.bundle.min.js') }}"></script>
  <!-- Circle progress -->
