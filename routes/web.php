@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 // ==================== ROOT ====================
@@ -24,6 +25,8 @@ Route::middleware('auth')->group(function () {
 
     // ✅ USERS (FULL CRUD)
     Route::resource('user', UserController::class);
+
+    Route::resource('location', LocationController::class);
 
     // ✅ PRINT USERS
   Route::get('/user/print', [UserController::class, 'print'])->name('user.print');

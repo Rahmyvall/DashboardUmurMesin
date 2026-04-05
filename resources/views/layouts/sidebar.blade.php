@@ -44,7 +44,7 @@
                   </a>
                   <ul aria-expanded="false">
                       <li>
-                          <a href="./lokasi-mesin.html">
+                          <a href="{{ route('location.index') }}">
                               <i class="fa-solid fa-location-dot me-2"></i> Lokasi / Area Mesin
                           </a>
                       </li>

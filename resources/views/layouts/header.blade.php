@@ -18,6 +18,8 @@
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 </head>
 
@@ -232,5 +234,16 @@
 
     .action-icon:hover {
         transform: scale(1.2);
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+        #map {
+            height: 300px !important;
+        }
     }
 </style>

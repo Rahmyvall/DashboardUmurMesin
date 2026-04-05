@@ -51,6 +51,8 @@
  <script>
      document.getElementById("year").textContent = new Date().getFullYear();
  </script>
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
  <script>
      const rowsPerPage = 3;
      const table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
@@ -122,6 +124,27 @@
              icon.classList.replace("fa-moon", "fa-sun");
          }
      };
+ </script>
+ <script>
+     var map = L.map('map').setView([-2.5, 118], 5);
+
+     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         attribution: '&copy; OpenStreetMap'
+     }).addTo(map);
+
+     var locations = @json($locations ?? []);
+
+     locations.forEach(function(loc) {
+         if (loc.latitude && loc.longitude) {
+             L.marker([loc.latitude, loc.longitude])
+                 .addTo(map)
+                 .bindPopup(`
+                    <b>${loc.name}</b><br>
+                    ${loc.address || ''}<br>
+                    ${loc.city || ''}
+                `);
+         }
+     });
  </script>
 
  <!-- Chartjs -->
