@@ -7,53 +7,33 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Laravel Aplikasih Dashboard peternakan ayam end-to-end
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  <a href="https://laravel.com" target="_blank">
+    <img src="public/img/2.png" width="100%" alt="Laravel Logo">
+  </a>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Deskripsi Aplikasi: aplikasi Sistem Dashboard Tracking Umur Mesin
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+tampilan interaktif yang menampilkan kondisi dan usia operasional mesin secara real-time. Dashboard ini memonitor waktu pakai, jadwal perawatan, dan estimasi umur sisa mesin untuk membantu pengambilan keputusan pemeliharaan preventif dan optimasi kinerja.
 
-## Learning Laravel
+### Alur SOP Utama dalam Aplikasi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+<p align="center">
+   <a href="https://laravel.com" target="_blank">
+    <img src="public/img/1.png" width="100%" alt="Laravel Logo">
+  </a>
+</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Manfaat Aplikasi
 
-## Laravel Sponsors
+Monitoring kondisi mesin secara real-time → memudahkan melihat usia pakai dan performa.
+Mencegah kerusakan mendadak → dengan jadwal perawatan yang terpantau.
+Mengoptimalkan biaya maintenance → perawatan dilakukan tepat waktu, tidak berlebihan atau terlambat.
+Meningkatkan umur pakai mesin → karena pemeliharaan lebih terencana.
+Mendukung pengambilan keputusan → data membantu menentukan kapan mesin perlu diperbaiki atau diganti.
+Meningkatkan efisiensi operasional → downtime bisa diminimalkan.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+###
