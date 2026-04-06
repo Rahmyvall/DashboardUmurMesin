@@ -193,33 +193,36 @@
                             </div>
                         </li>
                         <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                            <div class="user-name c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="{{ asset('admin/images/user/1.png') }}" height="40" width="40"
-                                    alt="">
+                                <span class="fw-bold">{{ Auth::user()->name }}</span>
                             </div>
-                            <div class="drop-down dropdown-profile   dropdown-menu">
+                            <div class="drop-down dropdown-profile dropdown-menu shadow">
                                 <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i>
-                                                <span>Profile</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="email-inbox.html"><i class="icon-envelope-open"></i>
-                                                <span>Inbox</span>
-                                                <div class="badge gradient-3 badge-pill badge-primary">3</div>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="dropdown-item">
+                                            <a href="app-profile.html" class="d-flex align-items-center">
+                                                <i class="icon-user me-2"></i>
+                                                <span>Profile</span>
                                             </a>
                                         </li>
-
-                                        <hr class="my-2">
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
-                                                    Screen</span></a>
+                                        <li class="dropdown-item">
+                                            <a href="email-inbox.html"
+                                                class="d-flex align-items-center justify-content-between">
+                                                <div><i class="icon-envelope-open me-2"></i>Inbox</div>
+                                                <div class="badge bg-primary rounded-pill">3</div>
+                                            </a>
                                         </li>
-                                        <li>
-                                            <a href="/logout">
-                                                <i class="icon-key"></i>
+                                        <hr class="my-2">
+                                        <li class="dropdown-item">
+                                            <a href="page-lock.html" class="d-flex align-items-center">
+                                                <i class="icon-lock me-2"></i>
+                                                <span>Lock Screen</span>
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <a href="/logout" class="d-flex align-items-center text-danger">
+                                                <i class="icon-key me-2"></i>
                                                 <span>Logout</span>
                                             </a>
                                         </li>

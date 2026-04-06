@@ -241,6 +241,52 @@
         transition: 0.3s;
     }
 
+    .user-avatar {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        border: 2px solid #4caf50;
+        /* memberi efek border hijau untuk online */
+    }
+
+    .activity.active {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 10px;
+        height: 10px;
+        background: #4caf50;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+
+    .dropdown-profile {
+        min-width: 200px;
+        border-radius: 10px;
+        padding: 10px 0;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+    }
+
+    .dropdown-profile .dropdown-item a {
+        padding: 10px 20px;
+        color: #333;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-profile .dropdown-item a:hover {
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
     @media (max-width: 768px) {
         #map {
             height: 300px !important;
