@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Location;
 use App\Models\Machine;
+use App\Models\MachineUsage; // 🔥 TAMBAHAN
 
 class DashboardController extends Controller
 {
@@ -41,6 +42,16 @@ class DashboardController extends Controller
         $activeMachines      = Machine::where('status', 'aktif')->count();
         $maintenanceMachines = Machine::where('status', 'maintenance')->count();
         $brokenMachines      = Machine::where('status', 'rusak')->count();
+
+        // =====================================================
+        // 🔥 DATA MACHINE USAGE (TAMBAHAN)
+        // =====================================================
+        $totalUsage = MachineUsage::count();
+
+        $todayHours = MachineUsage::whereDate('usage_date', now())
+            ->sum('hours_used');
+
+        $totalHours = MachineUsage::sum('hours_used');
 
         // =====================================================
         // 🔥 DATA UNTUK GRAFIK DONUT (STATUS)
@@ -84,7 +95,12 @@ class DashboardController extends Controller
             'maintenanceMachines',
             'brokenMachines',
 
-            // 🔥 chart
+            // 🔥 machine usage (TAMBAHAN)
+            'totalUsage',
+            'todayHours',
+            'totalHours',
+
+            // chart
             'machineStatusChart',
             'locationLabels',
             'locationTotals'

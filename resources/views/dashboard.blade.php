@@ -6,34 +6,45 @@
         {{-- ===================== STATS ===================== --}}
         <div class="container-fluid py-4 px-4">
 
-            <div class="row g-4 mb-5">
+            <div class="row g-5 mb-5">
 
-                @foreach ([['title' => 'Total Users', 'value' => $totalUsers, 'icon' => 'fa-users', 'color' => 'primary'], ['title' => 'Admin', 'value' => $totalAdmin, 'icon' => 'fa-user-shield', 'color' => 'success'], ['title' => 'Manager', 'value' => $totalManager, 'icon' => 'fa-user-tie', 'color' => 'warning'], ['title' => 'Profit', 'value' => '$ 8,541', 'icon' => 'fa-money-bill-wave', 'color' => 'danger']] as $item)
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card stat-card border-0 shadow-sm h-100">
+                <div class="row g-4"> {{-- 🔥 kasih jarak antar card --}}
+                    @foreach ([
+            ['title' => 'Total Users', 'value' => $totalUsers, 'icon' => 'fa-users', 'color' => 'primary'],
+            ['title' => 'Admin', 'value' => $totalAdmin, 'icon' => 'fa-user-shield', 'color' => 'success'],
+            ['title' => 'Manager', 'value' => $totalManager, 'icon' => 'fa-user-tie', 'color' => 'warning'],
 
-                            <!-- Accent Bar -->
-                            <div class="stat-bar bg-{{ $item['color'] }}"></div>
+            // 🔥 MACHINE USAGE
+            ['title' => 'Total Usage', 'value' => $totalUsage, 'icon' => 'fa-clock', 'color' => 'info'],
+            ['title' => 'Jam Hari Ini', 'value' => $todayHours . ' jam', 'icon' => 'fa-calendar-day', 'color' => 'success'],
+            ['title' => 'Total Jam', 'value' => $totalHours . ' jam', 'icon' => 'fa-hourglass-half', 'color' => 'dark'],
+        ] as $item)
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card stat-card border-0 shadow-sm h-100 p-2"> {{-- 🔥 padding tambahan --}}
 
-                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <!-- Accent Bar -->
+                                <div class="stat-bar bg-{{ $item['color'] }}"></div>
 
-                                <div>
-                                    <p class="text-muted small mb-1">
-                                        {{ $item['title'] }}
-                                    </p>
-                                    <h2 class="fw-bold mb-0">
-                                        {{ $item['value'] }}
-                                    </h2>
+                                <div class="card-body d-flex justify-content-between align-items-center py-3">
+
+                                    <div>
+                                        <p class="text-muted small mb-2"> {{-- 🔥 tambah jarak bawah --}}
+                                            {{ $item['title'] }}
+                                        </p>
+                                        <h2 class="fw-bold mb-0">
+                                            {{ $item['value'] }}
+                                        </h2>
+                                    </div>
+
+                                    <div class="icon-soft bg-{{ $item['color'] }}">
+                                        <i class="fa {{ $item['icon'] }}"></i>
+                                    </div>
+
                                 </div>
-
-                                <div class="icon-soft bg-{{ $item['color'] }}">
-                                    <i class="fa {{ $item['icon'] }}"></i>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
 
             </div>
         </div>

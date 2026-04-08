@@ -93,4 +93,9 @@ class Machine extends Model
         $this->attributes['code'] = strtoupper($value);
     }
 
+    public function usages()
+    {
+        return $this->hasMany(MachineUsage::class, 'machine_id');
+    }
+
 }

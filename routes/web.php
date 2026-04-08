@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MachineController;
+use App\Http\Controllers\MachineUsageController;
 use Illuminate\Support\Facades\Route;
 
 // ==================== ROOT ====================
@@ -31,8 +32,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('machine', MachineController::class);
 
+    Route::resource('machine-usage', MachineUsageController::class);
+
+    // route print
+    Route::get('machine-usage-print', [MachineUsageController::class, 'print'])
+        ->name('machine-usage.print');
+
     // ✅ PRINT USERS
-  Route::get('/user/print', [UserController::class, 'print'])->name('user.print');
+    Route::get('/user/print', [UserController::class, 'print'])->name('user.print');
 
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

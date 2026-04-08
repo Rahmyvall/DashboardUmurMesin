@@ -54,7 +54,7 @@
                           </a>
                       </li>
                       <li>
-                          <a href="./tracking-mesin.html">
+                          <a href="{{ route('machine-usage.index') }}">
                               <i class="fa-solid fa-clock me-2"></i> Jam Operasional
                           </a>
                       </li>

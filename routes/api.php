@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MachineController;
+use App\Http\Controllers\Api\MachineUsageApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +19,36 @@ Route::apiResource('users', UserController::class);
 
 
 // =====================================================
-// 🔥 MACHINE API (SESUAI DATABASE)
+// 🔥 MACHINE API
 // =====================================================
 Route::apiResource('machines', MachineController::class);
+
+
+// =====================================================
+// 🔥 MACHINE USAGE API (NEW)
+// =====================================================
+Route::apiResource('machine-usage', MachineUsageApiController::class);
 
 
 // =====================================================
 // 🔹 OPTIONAL FILTER (custom endpoint)
 // =====================================================
 
-// Filter berdasarkan status
+// Filter machine berdasarkan status
 Route::get('machines/status/{status}', [MachineController::class, 'index']);
+
+// Filter usage berdasarkan machine
+Route::get('machine-usage/machine/{machine_id}', [MachineUsageApiController::class, 'index']);
+
+// Filter usage berdasarkan tanggal
+Route::get('machine-usage/date', [MachineUsageApiController::class, 'index']);
 
 
 // =====================================================
 // 🔹 OPTIONAL DETAIL DENGAN RELASI
 // =====================================================
 Route::get('machines/{id}/detail', [MachineController::class, 'show']);
+Route::get('machine-usage/{id}/detail', [MachineUsageApiController::class, 'show']);
 
 
 // =====================================================
