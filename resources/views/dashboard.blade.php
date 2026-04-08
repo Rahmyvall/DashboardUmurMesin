@@ -4,89 +4,144 @@
     <div class="container-fluid py-4 px-4"> {{-- ⬅️ spacing atas & bawah utama --}}
 
         {{-- ===================== STATS ===================== --}}
-        <div class="row g-4 mb-5">
+        <div class="container-fluid py-4 px-4">
 
-            @foreach ([['title' => 'Total Users', 'value' => $totalUsers, 'icon' => 'fa-users', 'color' => 'primary'], ['title' => 'Admin', 'value' => $totalAdmin, 'icon' => 'fa-user-shield', 'color' => 'success'], ['title' => 'Manager', 'value' => $totalManager, 'icon' => 'fa-user-tie', 'color' => 'warning'], ['title' => 'Profit', 'value' => '$ 8,541', 'icon' => 'fa-money-bill-wave', 'color' => 'danger']] as $item)
-                <div class="col-xl-3 col-md-6">
-                    <div class="card modern-card h-100 border-0">
-                        <div class="card-body d-flex justify-content-between align-items-center">
+            <div class="row g-4 mb-5">
 
-                            <div>
-                                <p class="text-muted small mb-1">
-                                    {{ $item['title'] }}
-                                </p>
-                                <h2 class="fw-bold mb-0 text-dark">
-                                    {{ $item['value'] }}
-                                </h2>
+                @foreach ([['title' => 'Total Users', 'value' => $totalUsers, 'icon' => 'fa-users', 'color' => 'primary'], ['title' => 'Admin', 'value' => $totalAdmin, 'icon' => 'fa-user-shield', 'color' => 'success'], ['title' => 'Manager', 'value' => $totalManager, 'icon' => 'fa-user-tie', 'color' => 'warning'], ['title' => 'Profit', 'value' => '$ 8,541', 'icon' => 'fa-money-bill-wave', 'color' => 'danger']] as $item)
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card stat-card border-0 shadow-sm h-100">
+
+                            <!-- Accent Bar -->
+                            <div class="stat-bar bg-{{ $item['color'] }}"></div>
+
+                            <div class="card-body d-flex justify-content-between align-items-center">
+
+                                <div>
+                                    <p class="text-muted small mb-1">
+                                        {{ $item['title'] }}
+                                    </p>
+                                    <h2 class="fw-bold mb-0">
+                                        {{ $item['value'] }}
+                                    </h2>
+                                </div>
+
+                                <div class="icon-soft bg-{{ $item['color'] }}">
+                                    <i class="fa {{ $item['icon'] }}"></i>
+                                </div>
+
                             </div>
-
-                            <div class="icon-circle bg-{{ $item['color'] }}">
-                                <i class="fa {{ $item['icon'] }}"></i>
-                            </div>
-
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
 
+            </div>
         </div>
-
-
-
         {{-- ===================== CHART & MAP ===================== --}}
-        <div class="row g-4 mb-5">
+        <div class="row g-2 mb-5">
 
+            <!-- ================= MAP ================= -->
             <div class="col-xl-6">
-                <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100 dashboard-card">
 
                     <!-- Header -->
-                    <div class="card-header bg-gradient text-white d-flex justify-content-between align-items-center"
+                    <div class="d-flex justify-content-between align-items-center px-4 py-3"
                         style="background: linear-gradient(135deg, #4e73df, #224abe);">
-                        <h5 class="mb-0">
-                            <i class="fa-solid fa-location-dot me-2"></i>
-                            Store Location
-                        </h5>
-                        <span class="badge bg-light text-dark">
+
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle me-3">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 text-white fw-bold">Store Locations</h6>
+                                <small class="text-white-50">Monitoring lokasi mesin</small>
+                            </div>
+                        </div>
+
+                        <span class="badge bg-white text-primary fw-semibold px-3 py-2 shadow-sm">
                             {{ count($locations) }} Lokasi
                         </span>
                     </div>
 
                     <!-- Body -->
-                    <div class="card-body p-0">
-                        <div id="map" style="height: 420px; width: 100%;"></div>
+                    <div class="position-relative">
+                        <div id="map" style="height: 520px;"></div>
+
+                        <!-- Floating Info -->
+                        <div class="floating-box">
+                            <i class="fa-solid fa-circle text-success me-1"></i>
+                            Lokasi Aktif
+                        </div>
                     </div>
 
                     <!-- Footer -->
-                    <div class="card-footer text-muted small text-center">
+                    <div class="card-footer bg-light text-muted small text-center">
+                        <i class="fa-solid fa-hand-pointer me-1"></i>
                         Klik marker untuk melihat detail lokasi
                     </div>
 
                 </div>
             </div>
-            <div class="col-xl-6">
-                <div class="card modern-card h-100">
-                    <div class="card-body p-4">
-                        <h5 class="card-title mb-4">Sales Activity</h5>
 
+            <!-- ================= MACHINE ================= -->
+            <div class="col-xl-6">
+                <div class="card border-0 shadow-lg rounded-4 h-100 dashboard-card">
+
+                    <div class="card-body p-4">
+
+                        <!-- Header -->
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <div>
-                                <h3 class="fw-bold mb-0">720</h3>
-                                <small class="text-muted">Last 6 months</small>
+                                <h5 class="fw-bold text-dark mb-0">
+                                    <i class="bi bi-gear-fill text-primary me-2"></i>
+                                    Machine Activity
+                                </h5>
+                                <small class="text-muted">Monitoring kondisi mesin</small>
                             </div>
-                            <span class="badge bg-success px-3 py-2">+5%</span>
+
+                            <span class="badge bg-primary-subtle text-primary px-3 py-2">
+                                ● Realtime
+                            </span>
                         </div>
 
-                        <div id="smil-animations" class="mb-4"></div>
+                        <!-- Total Mesin -->
+                        <div class="mb-4">
+                            <h1 class="fw-bold text-primary mb-0">
+                                {{ $totalMachines }}
+                            </h1>
+                            <small class="text-muted">Total Mesin Terdaftar</small>
+                        </div>
 
-                        <div class="row text-center pt-3 border-top">
-                            <div class="col-6">
-                                <p class="text-muted mb-1">Positive</p>
-                                <h5 class="text-success fw-bold">95%</h5>
+                        <!-- Grafik -->
+                        <div id="machine-chart" style="height: 260px;"></div>
+
+                        <!-- Statistik -->
+                        <div class="row mt-4 g-3">
+
+                            <div class="col-4">
+                                <div class="mini-card success">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Aktif</span>
+                                    <h5>{{ $activeMachines }}</h5>
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <p class="text-muted mb-1">Negative</p>
-                                <h5 class="text-danger fw-bold">5%</h5>
+
+                            <div class="col-4">
+                                <div class="mini-card warning">
+                                    <i class="bi bi-tools"></i>
+                                    <span>Maintenance</span>
+                                    <h5>{{ $maintenanceMachines }}</h5>
+                                </div>
                             </div>
+
+                            <div class="col-4">
+                                <div class="mini-card danger">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                    <span>Rusak</span>
+                                    <h5>{{ $brokenMachines }}</h5>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -94,7 +149,6 @@
             </div>
 
         </div>
-
 
         {{-- ===================== TABLE ===================== --}}
         <div class="row">

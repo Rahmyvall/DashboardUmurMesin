@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Location;
+use App\Models\Machine;
 
 class DashboardController extends Controller
 {
@@ -13,21 +14,53 @@ class DashboardController extends Controller
         $title = 'Dashboard';
         $menuDashboard = 'active';
 
-        // 🔹 Data Users
+        // =====================================================
+        // 🔹 DATA USERS
+        // =====================================================
         $totalUsers   = User::count();
         $totalAdmin   = User::where('role', 'admin')->count();
         $totalTeknisi = User::where('role', 'teknisi')->count();
         $totalManager = User::where('role', 'manager')->count();
 
-        // 🔹 Data Locations
-        $totalLocations = Location::count();
-        $activeLocations = Location::where('is_active', true)->count();
+        // =====================================================
+        // 🔹 DATA LOCATIONS
+        // =====================================================
+        $totalLocations   = Location::count();
+        $activeLocations  = Location::where('is_active', true)->count();
         $inactiveLocations = Location::where('is_active', false)->count();
 
-        // 🔹 Data untuk MAP (yang punya koordinat)
+        // MAP
         $locations = Location::whereNotNull('latitude')
             ->whereNotNull('longitude')
             ->get();
+
+        // =====================================================
+        // 🔥 DATA MACHINES
+        // =====================================================
+        $totalMachines       = Machine::count();
+        $activeMachines      = Machine::where('status', 'aktif')->count();
+        $maintenanceMachines = Machine::where('status', 'maintenance')->count();
+        $brokenMachines      = Machine::where('status', 'rusak')->count();
+
+        // =====================================================
+        // 🔥 DATA UNTUK GRAFIK DONUT (STATUS)
+        // =====================================================
+        $machineStatusChart = [
+            $activeMachines,
+            $maintenanceMachines,
+            $brokenMachines
+        ];
+
+        // =====================================================
+        // 🔥 DATA UNTUK GRAFIK BAR (PER LOKASI)
+        // =====================================================
+        $machinesByLocation = Machine::selectRaw('location_id, COUNT(*) as total')
+            ->groupBy('location_id')
+            ->with('location')
+            ->get();
+
+        $locationLabels = $machinesByLocation->pluck('location.name');
+        $locationTotals = $machinesByLocation->pluck('total');
 
         return view('dashboard', compact(
             'title',
@@ -43,7 +76,18 @@ class DashboardController extends Controller
             'totalLocations',
             'activeLocations',
             'inactiveLocations',
-            'locations'
+            'locations',
+
+            // machine
+            'totalMachines',
+            'activeMachines',
+            'maintenanceMachines',
+            'brokenMachines',
+
+            // 🔥 chart
+            'machineStatusChart',
+            'locationLabels',
+            'locationTotals'
         ));
     }
 }

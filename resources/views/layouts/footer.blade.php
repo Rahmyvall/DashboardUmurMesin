@@ -146,7 +146,64 @@
          }
      });
  </script>
+ <!-- WAJIB: Load ApexCharts -->
+ <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
+ <script>
+     document.addEventListener("DOMContentLoaded", function() {
+
+         // =============================
+         // 🔥 DONUT CHART (STATUS MESIN)
+         // =============================
+         var machineChartEl = document.querySelector("#machine-chart");
+
+         if (machineChartEl) {
+             var machineOptions = {
+                 series: [
+                     {{ $activeMachines ?? 0 }},
+                     {{ $maintenanceMachines ?? 0 }},
+                     {{ $brokenMachines ?? 0 }}
+                 ],
+                 chart: {
+                     type: 'donut',
+                     height: 250
+                 },
+                 labels: ['Aktif', 'Maintenance', 'Rusak'],
+                 colors: ['#28a745', '#ffc107', '#dc3545'],
+                 legend: {
+                     position: 'bottom'
+                 }
+             };
+
+             new ApexCharts(machineChartEl, machineOptions).render();
+         }
+
+         // =============================
+         // 🔥 BAR CHART (PER LOKASI)
+         // =============================
+         var locationChartEl = document.querySelector("#chart-location");
+
+         if (locationChartEl) {
+             var locationOptions = {
+                 series: [{
+                     name: 'Jumlah Mesin',
+                     data: {!! json_encode($locationTotals ?? []) !!}
+                 }],
+                 chart: {
+                     type: 'bar',
+                     height: 300
+                 },
+                 xaxis: {
+                     categories: {!! json_encode($locationLabels ?? []) !!}
+                 }
+             };
+
+             new ApexCharts(locationChartEl, locationOptions).render();
+         }
+
+     });
+ </script>
+ <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
  <!-- Chartjs -->
  <script src="{{ asset('admin/plugins/chart.js/Chart.bundle.min.js') }}"></script>
  <!-- Circle progress -->

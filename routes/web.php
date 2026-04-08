@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MachineController;
 use Illuminate\Support\Facades\Route;
 
 // ==================== ROOT ====================
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('user', UserController::class);
 
     Route::resource('location', LocationController::class);
+
+    Route::resource('machine', MachineController::class);
 
     // ✅ PRINT USERS
   Route::get('/user/print', [UserController::class, 'print'])->name('user.print');

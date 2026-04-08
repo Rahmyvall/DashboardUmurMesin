@@ -37,7 +37,7 @@
     /* DARK MODE */
     body.dark-mode {
         background: #121212;
-        color: #fff;
+        color: #179ace;
     }
 
     /* navbar */
@@ -113,7 +113,7 @@
     }
 
     * Jarak pagination */ .pagination {
-        margin-top: 15px;
+        margin-top: 10px;
     }
 
     /* Tengahin pagination */
@@ -181,110 +181,131 @@
     }
 
     /* Card modern */
-    .modern-card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        transition: 0.25s;
+    .dashboard-card {
+        transition: 0.3s ease;
     }
 
-    .modern-card:hover {
-        transform: translateY(-4px);
+    .dashboard-card:hover {
+        transform: translateY(-6px);
     }
 
     /* Icon bulat */
     .icon-circle {
-        width: 48px;
-        height: 48px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px;
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 18px;
+        color: white;
     }
 
-    /* Search */
-    .modern-search {
-        max-width: 220px;
+    /* Floating box di map */
+    .floating-box {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: white;
+        padding: 6px 12px;
         border-radius: 8px;
+        font-size: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* Table */
-    .modern-table thead {
-        background: #f8f9fa;
-    }
-
-    .modern-table th {
-        font-weight: 600;
-        color: #6c757d;
-    }
-
-    /* Progress */
-    .modern-progress {
-        height: 6px;
-        border-radius: 10px;
-    }
-
-    /* Action icon */
-    .action-icon {
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .action-icon:hover {
-        transform: scale(1.2);
-    }
-
-    .card:hover {
-        transform: translateY(-3px);
+    /* Mini card */
+    .mini-card {
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
         transition: 0.3s;
     }
 
-    .user-avatar {
-        width: 45px;
-        height: 45px;
-        object-fit: cover;
-        border: 2px solid #4caf50;
-        /* memberi efek border hijau untuk online */
+    .mini-card i {
+        font-size: 20px;
+        margin-bottom: 5px;
     }
 
-    .activity.active {
-        position: absolute;
-        bottom: 2px;
-        right: 2px;
-        width: 10px;
-        height: 10px;
-        background: #4caf50;
-        border-radius: 50%;
-        border: 2px solid #fff;
+    .mini-card span {
+        display: block;
+        font-size: 12px;
+        color: #777;
     }
 
-    .dropdown-profile {
-        min-width: 200px;
-        border-radius: 10px;
-        padding: 10px 0;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        background-color: #fff;
+    .mini-card h5 {
+        margin: 5px 0 0;
+        font-weight: bold;
     }
 
-    .dropdown-profile .dropdown-item a {
-        padding: 10px 20px;
-        color: #333;
+    /* Warna */
+    .mini-card.success {
+        background: #eafaf1;
+        color: #28a745;
+    }
+
+    .mini-card.warning {
+        background: #fff8e6;
+        color: #ffc107;
+    }
+
+    .mini-card.danger {
+        background: #fdeaea;
+        color: #dc3545;
+    }
+
+    /* Hover mini */
+    .mini-card:hover {
+        transform: scale(1.05);
+    }
+
+    .stat-card {
+        border-radius: 16px;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Accent bar atas */
+    .stat-bar {
+        height: 4px;
+        width: 100%;
+    }
+
+    /* Icon soft */
+    .icon-soft {
+        width: 55px;
+        height: 55px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+        opacity: 0.9;
     }
 
-    .dropdown-profile .dropdown-item a:hover {
-        background-color: #f0f0f0;
-        border-radius: 8px;
-        text-decoration: none;
+    /* Warna soft background */
+    .bg-primary {
+        background: linear-gradient(135deg, #4e73df, #224abe);
     }
 
-    .badge {
-        font-size: 0.75rem;
-        padding: 3px 8px;
+    .bg-success {
+        background: linear-gradient(135deg, #1cc88a, #17a673);
+    }
+
+    .bg-warning {
+        background: linear-gradient(135deg, #f6c23e, #dda20a);
+    }
+
+    .bg-danger {
+        background: linear-gradient(135deg, #e74a3b, #c0392b);
+    }
+
+    /* Typography */
+    .stat-card h2 {
+        font-size: 28px;
+        color: #2c3e50;
     }
 
     @media (max-width: 768px) {

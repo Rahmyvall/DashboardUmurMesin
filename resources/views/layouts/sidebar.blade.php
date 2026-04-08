@@ -49,7 +49,7 @@
                           </a>
                       </li>
                       <li>
-                          <a href="./mesin.html">
+                          <a href="{{ route('machine.index') }}">
                               <i class="fa-solid fa-gears me-2"></i> Master Data Mesin
                           </a>
                       </li>
