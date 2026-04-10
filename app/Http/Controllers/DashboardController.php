@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Location;
 use App\Models\Machine;
 use App\Models\MachineUsage; // 🔥 TAMBAHAN
+use App\Models\Maintenance;
 
 class DashboardController extends Controller
 {
@@ -73,6 +74,12 @@ class DashboardController extends Controller
         $locationLabels = $machinesByLocation->pluck('location.name');
         $locationTotals = $machinesByLocation->pluck('total');
 
+        $totalMaintenanceCost   = Maintenance::sum('cost');
+        $avgMaintenanceCost     = Maintenance::avg('cost') ?? 0;
+        $currentMonthCost       = Maintenance::whereMonth('maintenance_date', now()->month)
+                                            ->whereYear('maintenance_date', now()->year)
+                                            ->sum('cost');
+        $totalMaintenanceCount  = Maintenance::count();
         return view('dashboard', compact(
             'title',
             'menuDashboard',
@@ -99,6 +106,12 @@ class DashboardController extends Controller
             'totalUsage',
             'todayHours',
             'totalHours',
+
+            // 🔥 Maintenance Cost (WAJIB)
+            'totalMaintenanceCost',
+            'avgMaintenanceCost',
+            'currentMonthCost',
+            'totalMaintenanceCount',
 
             // chart
             'machineStatusChart',

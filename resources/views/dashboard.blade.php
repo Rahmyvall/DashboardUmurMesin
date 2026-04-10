@@ -9,6 +9,7 @@
             <div class="row g-5 mb-5">
 
                 <div class="row g-4"> {{-- 🔥 kasih jarak antar card --}}
+
                     @foreach ([
             ['title' => 'Total Users', 'value' => $totalUsers, 'icon' => 'fa-users', 'color' => 'primary'],
             ['title' => 'Admin', 'value' => $totalAdmin, 'icon' => 'fa-user-shield', 'color' => 'success'],
@@ -18,9 +19,18 @@
             ['title' => 'Total Usage', 'value' => $totalUsage, 'icon' => 'fa-clock', 'color' => 'info'],
             ['title' => 'Jam Hari Ini', 'value' => $todayHours . ' jam', 'icon' => 'fa-calendar-day', 'color' => 'success'],
             ['title' => 'Total Jam', 'value' => $totalHours . ' jam', 'icon' => 'fa-hourglass-half', 'color' => 'dark'],
+
+            // 🔥 MAINTENANCE COST - DITAMBAHKAN
+            ['title' => 'Total Biaya Maintenance', 'value' => 'Rp ' . number_format($totalMaintenanceCost, 0, ',', '.'), 'icon' => 'fa-money-bill-wave', 'color' => 'danger'],
+
+            ['title' => 'Rata-rata Biaya', 'value' => 'Rp ' . number_format($avgMaintenanceCost, 0, ',', '.'), 'icon' => 'fa-chart-bar', 'color' => 'warning'],
+
+            ['title' => 'Biaya Bulan Ini', 'value' => 'Rp ' . number_format($currentMonthCost, 0, ',', '.'), 'icon' => 'fa-calendar-alt', 'color' => 'primary'],
+
+            ['title' => 'Total Maintenance', 'value' => $totalMaintenanceCount . ' kali', 'icon' => 'fa-tools', 'color' => 'info'],
         ] as $item)
                         <div class="col-xl-3 col-md-6">
-                            <div class="card stat-card border-0 shadow-sm h-100 p-2"> {{-- 🔥 padding tambahan --}}
+                            <div class="card stat-card border-0 shadow-sm h-100 p-2">
 
                                 <!-- Accent Bar -->
                                 <div class="stat-bar bg-{{ $item['color'] }}"></div>
@@ -28,7 +38,7 @@
                                 <div class="card-body d-flex justify-content-between align-items-center py-3">
 
                                     <div>
-                                        <p class="text-muted small mb-2"> {{-- 🔥 tambah jarak bawah --}}
+                                        <p class="text-muted small mb-2">
                                             {{ $item['title'] }}
                                         </p>
                                         <h2 class="fw-bold mb-0">
@@ -44,6 +54,7 @@
                             </div>
                         </div>
                     @endforeach
+
                 </div>
 
             </div>
@@ -159,65 +170,6 @@
                 </div>
             </div>
 
-        </div>
-
-        {{-- ===================== TABLE ===================== --}}
-        <div class="row">
-            <div class="col-12">
-                <div class="card modern-card">
-                    <div class="card-body p-4">
-
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="mb-0">Task Progress</h5>
-                            <input type="text" class="form-control modern-search" placeholder="Search...">
-                        </div>
-
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle modern-table">
-                                <thead>
-                                    <tr>
-                                        <th>Task</th>
-                                        <th>Progress</th>
-                                        <th>Deadline</th>
-                                        <th>Status</th>
-                                        <th class="text-end">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach ([['name' => 'Air Conditioner', 'date' => 'Apr 20, 2018', 'progress' => 70], ['name' => 'Textiles', 'date' => 'May 27, 2018', 'progress' => 70], ['name' => 'Milk Powder', 'date' => 'May 18, 2018', 'progress' => 70]] as $task)
-                                        <tr>
-                                            <td class="fw-medium">{{ $task['name'] }}</td>
-
-                                            <td style="width:200px">
-                                                <div class="progress modern-progress">
-                                                    <div class="progress-bar" style="width: {{ $task['progress'] }}%">
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="text-muted">{{ $task['date'] }}</td>
-
-                                            <td>
-                                                <span class="badge bg-primary-subtle text-primary">
-                                                    {{ $task['progress'] }}%
-                                                </span>
-                                            </td>
-
-                                            <td class="text-end">
-                                                <i class="fa fa-pencil text-warning me-3 action-icon"></i>
-                                                <i class="fa fa-trash text-danger action-icon"></i>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
