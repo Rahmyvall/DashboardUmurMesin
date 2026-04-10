@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MachineController;
 use App\Http\Controllers\Api\MachineUsageApiController;
+use App\Http\Controllers\Api\MaintenanceApiController;   // ← Tambahan Baru
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +26,15 @@ Route::apiResource('machines', MachineController::class);
 
 
 // =====================================================
-// 🔥 MACHINE USAGE API (NEW)
+// 🔥 MACHINE USAGE API
 // =====================================================
 Route::apiResource('machine-usage', MachineUsageApiController::class);
 
 
+
+
 // =====================================================
-// 🔹 OPTIONAL FILTER (custom endpoint)
+// 🔹 OPTIONAL FILTER & CUSTOM ENDPOINT
 // =====================================================
 
 // Filter machine berdasarkan status
@@ -50,6 +53,8 @@ Route::get('machine-usage/date', [MachineUsageApiController::class, 'index']);
 Route::get('machines/{id}/detail', [MachineController::class, 'show']);
 Route::get('machine-usage/{id}/detail', [MachineUsageApiController::class, 'show']);
 
+
+Route::apiResource('maintenance', MaintenanceApiController::class);
 
 // =====================================================
 // 🔹 AUTH (Optional)

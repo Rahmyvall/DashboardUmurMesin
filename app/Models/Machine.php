@@ -98,4 +98,10 @@ class Machine extends Model
         return $this->hasMany(MachineUsage::class, 'machine_id');
     }
 
+    // Di Model Machine.php
+    public function maintenances()
+    {
+        return $this->hasMany(Maintenance::class, 'machine_id');
+    }
+
 }

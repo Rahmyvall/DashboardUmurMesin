@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\MachineUsageController;
+use App\Http\Controllers\MaintenanceController;
 use Illuminate\Support\Facades\Route;
 
 // ==================== ROOT ====================
@@ -34,9 +35,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('machine-usage', MachineUsageController::class);
 
-    // route print
-    Route::get('machine-usage-print', [MachineUsageController::class, 'print'])
-        ->name('machine-usage.print');
+    Route::resource('maintenance', MaintenanceController::class);
+
+    Route::get('/maintenance/print', [MaintenanceController::class, 'print'])
+     ->name('maintenance.print');
+
 
     // ✅ PRINT USERS
     Route::get('/user/print', [UserController::class, 'print'])->name('user.print');

@@ -68,7 +68,7 @@
                   </a>
                   <ul aria-expanded="false">
                       <li>
-                          <a href="./maintenance.html">
+                          <a href="{{ route('maintenance.index') }}">
                               <i class="fa-solid fa-tools me-2"></i> Data Maintenance
                           </a>
                       </li>

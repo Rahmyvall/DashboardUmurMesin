@@ -47,4 +47,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Di Model User.php
+    public function maintenances()
+    {
+        return $this->hasMany(Maintenance::class, 'technician_id');
+    }
 }

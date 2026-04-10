@@ -9,15 +9,14 @@
 
                         <!-- Judul -->
                         <h4 class="card-title mb-3 fw-bold text-primary">
-                            {{ $title }}
+                            {{ $title ?? 'Data Maintenance' }}
                         </h4>
 
                         <!-- Action Buttons -->
-                        <div class="mb-3 d-flex justify-content-between">
-                            <a href="{{ route('machine-usage.create') }}" class="btn btn-success">
-                                <i class="bi bi-plus-lg"></i> Tambah Usage
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('maintenance.create') }}" class="btn btn-success">
+                                <i class="bi bi-plus-lg"></i> Tambah Maintenance
                             </a>
-
                         </div>
 
                         <!-- Table -->
@@ -26,58 +25,82 @@
                                 <thead class="table-secondary text-body">
                                     <tr class="text-center">
                                         <th>No</th>
-                                        <th>Machine</th>
-                                        <th>Tanggal</th>
-                                        <th>Jam Pakai</th>
-                                        <th>Total Jam</th>
+                                        <th>Mesin</th>
+                                        <th>Tipe Maintenance</th>
+                                        <th>Tanggal Maintenance</th>
+                                        <th>Teknisi</th>
+                                        <th>Biaya</th>
                                         <th>Dibuat</th>
                                         <th class="no-print">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($usages as $usage)
+                                    @foreach ($maintenances as $maintenance)
                                         <tr>
                                             <td class="text-center">
-                                                {{ $usages->firstItem() + $loop->index }}
+                                                {{ $maintenances->firstItem() + $loop->index }}
                                             </td>
 
-                                            <!-- Relasi machine -->
+                                            <!-- Relasi Machine -->
                                             <td>
-                                                {{ $usage->machine->name ?? '-' }}
+                                                {{ $maintenance->machine->name ?? ($maintenance->machine->code ?? 'Mesin #' . $maintenance->machine_id) }}
                                             </td>
 
+                                            <!-- Maintenance Type -->
                                             <td class="text-center">
-                                                {{ \Carbon\Carbon::parse($usage->usage_date)->format('d M Y') }}
+                                                @if ($maintenance->maintenance_type == 'preventive')
+                                                    <span class="badge bg-success">Preventive</span>
+                                                @else
+                                                    <span class="badge bg-danger">Corrective</span>
+                                                @endif
                                             </td>
 
+                                            <!-- Tanggal Maintenance -->
                                             <td class="text-center">
-                                                {{ $usage->hours_used }} jam
+                                                {{ \Carbon\Carbon::parse($maintenance->maintenance_date)->format('d M Y') }}
                                             </td>
 
-                                            <td class="text-center">
-                                                {{ $usage->total_hours }} jam
+                                            <!-- Teknisi -->
+                                            <td>
+                                                @if ($maintenance->technician)
+                                                    <span class="badge bg-primary">
+                                                        {{ $maintenance->technician->name }}
+                                                        @if ($maintenance->technician->initials ?? false)
+                                                            <small
+                                                                class="ms-1 opacity-75">({{ $maintenance->technician->initials }})</small>
+                                                        @endif
+                                                    </span>
+                                                @else
+                                                    <span class="badge bg-secondary">—</span>
+                                                @endif
                                             </td>
 
+                                            <!-- Biaya -->
+                                            <td class="text-end fw-medium">
+                                                Rp {{ number_format($maintenance->cost ?? 0, 0, ',', '.') }}
+                                            </td>
+
+                                            <!-- Created At -->
                                             <td class="text-center">
-                                                {{ \Carbon\Carbon::parse($usage->created_at)->format('d M Y H:i') }}
+                                                {{ \Carbon\Carbon::parse($maintenance->created_at)->format('d M Y H:i') }}
                                             </td>
 
                                             <!-- Actions -->
                                             <td class="text-center no-print">
 
-                                                <a href="{{ route('machine-usage.show', $usage->id) }}"
+                                                <a href="{{ route('maintenance.show', $maintenance->id) }}"
                                                     class="btn btn-sm btn-info">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
 
-                                                <a href="{{ route('machine-usage.edit', $usage->id) }}"
+                                                <a href="{{ route('maintenance.edit', $maintenance->id) }}"
                                                     class="btn btn-sm btn-warning">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
 
-                                                <form action="{{ route('machine-usage.destroy', $usage->id) }}"
+                                                <form action="{{ route('maintenance.destroy', $maintenance->id) }}"
                                                     method="POST" class="d-inline"
-                                                    onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                                                    onsubmit="return confirm('Yakin ingin menghapus data maintenance ini?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-sm btn-danger">
@@ -94,7 +117,7 @@
 
                         <!-- Pagination -->
                         <div class="mt-3 d-flex justify-content-center no-print">
-                            {{ $usages->links('pagination::bootstrap-5') }}
+                            {{ $maintenances->links('pagination::bootstrap-5') }}
                         </div>
 
                     </div>
@@ -130,6 +153,11 @@
 
             .no-print {
                 display: none !important;
+            }
+
+            .badge {
+                border: 1px solid #000;
+                color: black !important;
             }
         }
     </style>
