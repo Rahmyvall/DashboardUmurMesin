@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MachineController;
 use App\Http\Controllers\Api\MachineUsageApiController;
 use App\Http\Controllers\Api\MaintenanceApiController;   // ← Tambahan Baru
+use App\Http\Controllers\Api\MaintenanceScheduleApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +68,20 @@ Route::apiResource('maintenance', MaintenanceApiController::class);
 //     Route::get('profile', [AuthController::class, 'profile']);
 // });
 
+Route::prefix('maintenance-schedules')->group(function () {
 
+    Route::get('/', [MaintenanceScheduleApiController::class, 'index']);
+    Route::post('/', [MaintenanceScheduleApiController::class, 'store']);
+
+    Route::get('/upcoming', [MaintenanceScheduleApiController::class, 'upcoming']);
+
+    Route::get('{maintenance_schedule}', [MaintenanceScheduleApiController::class, 'show']);
+    Route::put('{maintenance_schedule}', [MaintenanceScheduleApiController::class, 'update']);
+    Route::delete('{maintenance_schedule}', [MaintenanceScheduleApiController::class, 'destroy']);
+
+    // Complete Maintenance
+    Route::post('{maintenance_schedule}/complete', [MaintenanceScheduleApiController::class, 'complete']);
+});
 // =====================================================
 // 🔹 TEST API
 // =====================================================

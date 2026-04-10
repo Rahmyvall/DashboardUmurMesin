@@ -19,6 +19,9 @@
    <a href="https://laravel.com" target="_blank">
     <img src="public/img/4.png" width="100%" alt="Laravel Logo">
   </a>
+    <a href="https://laravel.com" target="_blank">
+    <img src="public/img/5.png" width="100%" alt="Laravel Logo">
+  </a>
 </p>
 
 ## Deskripsi Aplikasi: aplikasi Sistem Dashboard Tracking Umur Mesin

@@ -7,6 +7,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\MachineUsageController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\MaintenanceScheduleController;
 use Illuminate\Support\Facades\Route;
 
 // ==================== ROOT ====================
@@ -40,7 +41,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/maintenance/print', [MaintenanceController::class, 'print'])
      ->name('maintenance.print');
 
+   Route::resource('maintenance-schedule', MaintenanceScheduleController::class);
 
+   // Form Complete (GET)
+    Route::get('maintenance-schedule/{maintenance_schedule}/complete',
+        [MaintenanceScheduleController::class, 'showCompleteForm'])
+        ->name('maintenance-schedule.complete.form');
+
+    // Proses Complete (POST)
+    Route::post('maintenance-schedule/{maintenance_schedule}/complete',
+        [MaintenanceScheduleController::class, 'complete'])
+        ->name('maintenance-schedule.complete');
     // ✅ PRINT USERS
     Route::get('/user/print', [UserController::class, 'print'])->name('user.print');
 

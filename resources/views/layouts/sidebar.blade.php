@@ -73,7 +73,7 @@
                           </a>
                       </li>
                       <li>
-                          <a href="./jadwal-maintenance.html">
+                          <a href="{{ route('maintenance-schedule.index') }}">
                               <i class="fa-solid fa-calendar-check me-2"></i> Jadwal Preventive
                           </a>
                       </li>

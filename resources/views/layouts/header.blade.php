@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Tracking Umur Mesin | {{ $title }}</title>
+    <title>
+    Tracking Umur Mesin
+    @yield('title', 'Sistem Maintenance')
+</title>
     <!-- Favicon icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="{{ asset('admin/image/png') }}" sizes="16x16" href="{{ asset('admin/images/logo.png') }}">

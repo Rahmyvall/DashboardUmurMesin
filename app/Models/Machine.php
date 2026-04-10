@@ -104,4 +104,9 @@ class Machine extends Model
         return $this->hasMany(Maintenance::class, 'machine_id');
     }
 
+    public function maintenanceSchedules()
+    {
+        return $this->hasMany(MaintenanceSchedule::class, 'machine_id');
+    }
+
 }
