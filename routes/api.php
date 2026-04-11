@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MachineController;
 use App\Http\Controllers\Api\MachineUsageApiController;
 use App\Http\Controllers\Api\MaintenanceApiController;   // ← Tambahan Baru
 use App\Http\Controllers\Api\MaintenanceScheduleApiController;
+use App\Http\Controllers\MachineConditionController;
 
 /*
 |--------------------------------------------------------------------------

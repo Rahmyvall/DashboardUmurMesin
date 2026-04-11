@@ -82,11 +82,6 @@
                               <i class="fa-solid fa-bell me-2"></i> Alert / Notifikasi
                           </a>
                       </li>
-                      <li>
-                          <a href="./log-mesin.html">
-                              <i class="fa-solid fa-clipboard-list me-2"></i> Log Kondisi Mesin
-                          </a>
-                      </li>
                   </ul>
               </li>
           </ul>

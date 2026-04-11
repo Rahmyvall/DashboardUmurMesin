@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
    // Web Routes
     Route::resource('alerts', AlertController::class);
 
+    
     Route::post('alerts/{alert}/read', [AlertController::class, 'markAsRead'])->name('alerts.read');
     Route::post('alerts/{alert}/resolve', [AlertController::class, 'markAsResolved'])->name('alerts.resolve');
 
