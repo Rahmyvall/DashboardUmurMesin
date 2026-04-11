@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlertController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,12 @@ Route::middleware('auth')->group(function () {
      ->name('maintenance.print');
 
    Route::resource('maintenance-schedule', MaintenanceScheduleController::class);
+
+   // Web Routes
+    Route::resource('alerts', AlertController::class);
+
+    Route::post('alerts/{alert}/read', [AlertController::class, 'markAsRead'])->name('alerts.read');
+    Route::post('alerts/{alert}/resolve', [AlertController::class, 'markAsResolved'])->name('alerts.resolve');
 
    // Form Complete (GET)
     Route::get('maintenance-schedule/{maintenance_schedule}/complete',

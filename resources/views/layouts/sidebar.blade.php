@@ -78,7 +78,7 @@
                           </a>
                       </li>
                       <li>
-                          <a href="./alert.html">
+                          <a href="{{ route('alerts.index') }}">
                               <i class="fa-solid fa-bell me-2"></i> Alert / Notifikasi
                           </a>
                       </li>
